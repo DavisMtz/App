@@ -1,0 +1,47 @@
+{
+  "entities": {
+    "Professional": {
+      "title": "Professional",
+      "description": "A professional offering services",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "name": { "type": "string" },
+        "title": { "type": "string", "description": "Professional title or role" },
+        "bio": { "type": "string" },
+        "skills": { "type": "array", "items": { "type": "string" } },
+        "contactEmail": { "type": "string" },
+        "contactPhone": { "type": "string" },
+        "linkedin": { "type": "string" },
+        "createdAt": { "type": "number" },
+        "updatedAt": { "type": "number" }
+      },
+      "required": ["userId", "name", "title", "createdAt", "updatedAt"]
+    },
+    "Inquiry": {
+      "title": "Inquiry",
+      "description": "A business inquiry or idea submission",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Optional user ID if logged in" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "businessName": { "type": "string" },
+        "idea": { "type": "string" },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["name", "email", "idea", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/professionals/{professionalId}": {
+      "schema": { "$ref": "#/entities/Professional" },
+      "description": "Collection of professional profiles"
+    },
+    "/inquiries/{inquiryId}": {
+      "schema": { "$ref": "#/entities/Inquiry" },
+      "description": "Collection of business inquiries"
+    }
+  }
+}
